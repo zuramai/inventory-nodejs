@@ -1,0 +1,122 @@
+<% include include/header.ejs %>
+
+<div class="content">
+	<div class="content-header">
+		<div class="page-title">
+			<h3>Transaksi</h3>
+		</div>
+		<div class="page-breadcumb">
+			
+			<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item"><a href="#">Home</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Transaksi</li>
+			  </ol>
+			</nav>
+		</div>
+	</div>			
+	<div class="content-body">
+		
+		<section  class="chart">
+			<div class="panel">
+				<div class="panel-header d-flex align-items-center justify-content-between">
+						<div class="panel-title">
+							<i class="fa fa-book"></i> 	   Transaksi
+						</div>
+						<div>
+							
+						</div>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-12">
+							<% if(successMsg.length > 0){ %>
+								<div class="alert alert-success" role="alert">
+									<%= successMsg %>
+								</div>
+							<% } %>
+						</div>
+						
+					</div>
+					<div class="table-responsive">
+						<table class="table table-hover">
+							<thead>
+								<tr>
+									<th>#</th>
+									<th>Kode trx</th>
+									<th>Operator</th>
+									<th>Barang</th>
+									<th>Distributor</th>
+									<th>Keterangan</th>
+									<th>Tanggal</th>
+									<th>Action</th>
+								</tr>
+							</thead>
+							<tbody>
+								<% data.forEach( function(transaksi, index) { 
+									var date=new Date(transaksi.tanggal); 
+									var newdate =  (date.getMonth() + 1) + '/' + date.getDate() + '/' +  date.getFullYear();%>
+								<tr>
+									<td><%= index+1	 %></td>
+									<td><%= transaksi.kode_trx %></td>
+									<td><%= transaksi.operator_id %></td>
+									<td><%= transaksi.id_barang %></td>
+									<td><%= transaksi.dist_id %></td>
+									<td><%= transaksi.keterangan %></td>
+									<td><%= newdate %></td>
+									<td>
+										<a href="/items/edit/<%= transaksi.id %>">
+											<i class="fa fa-edit"></i>
+										</a>
+										<a href="/items/delete/<%= transaksi.id %>">
+											<i class="fa fa-trash"></i>
+										</a>
+									</td>
+																		
+								</tr>
+								<% 	}) %>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>			
+<div class="modal fade tambah-exam" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new Items</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+        <form method="POST" action="items/add" enctype="multipart/form-data">
+	      <div class="modal-body">
+	          <div class="form-group">
+	            <label for="recipient-name" class="col-form-label">Nama barang:</label>
+	            <input type="text" name="nama" class="form-control" id="recipient-name">
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-name" class="col-form-label">Jumlah:</label>
+	            <input type="number" name="jml" class="form-control" id="recipient-name">
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-name" class="col-form-label">Kategori:</label>
+	            
+	          </div>
+	          <div class="form-group">
+	            <label for="recipient-name" class="col-form-label">Foto:</label>
+	            <input type="file" name="foto" class="" id="recipient-name">
+	          </div>
+	      </div>
+	      <div class="modal-footer">
+	        <button type="button" class="btn btn-secondary" data-dism	iss="modal">Close</button>
+	        <button type="submit" class="btn btn-primary">Tambah</button>
+	      </div>
+       </form>
+    </div>
+  </div>
+</div>
+
+<% include include/footer.ejs %>

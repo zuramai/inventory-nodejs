@@ -1,0 +1,114 @@
+<% include include/header.ejs %>
+
+<div class="content">
+	<div class="content-header">
+		<div class="page-title">
+			<h3>Update Users</h3>
+		</div>
+		<div class="page-breadcumb">
+			
+			<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item"><a href="#">Home</a></li>
+			    <li class="breadcrumb-item active" aria-current="page">Users</li>
+			    <li class="breadcrumb-item active" aria-current="page">Update</li>
+			  </ol>
+			</nav>
+		</div>
+	</div>			
+	<div class="content-body">
+		
+		<section  class="chart">
+			<div class="panel">
+				<div class="panel-header d-flex align-items-center justify-content-between">
+						<div class="panel-title">
+							<i class="fa fa-book"></i> 	   Ubah
+						</div>
+						<div>
+							
+						</div>
+				</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-6">
+							
+							<div class="form">
+								<% data.forEach( function(user) { %>
+									<form method="POST" action="/users/update">
+										<input type="hidden" value="<%= user.id %>" name="id">
+										<div class="form-group">
+											<label>Nama</label>
+											<input class="form-control" type="text" name="nama" value="<%= user.nama %>"></input>
+										</div>
+										<div class="form-group">
+											<label>Username</label>
+											<input class="form-control" name="username" type="text" value="<%= user.username %>"></input>
+										</div>
+										<div class="form-group">
+											<label>Password</label>
+											<input class="form-control" type="text" value="<%= user.password %>" name="password"></input>
+										</div>
+										<div class="form-group">
+											<label>Level</label>
+											<select class="form-control" name="level">
+												<option>Select one..</option>
+												<option value="operator" <%= user.level == "operator" ? "selected" : "" %>>Operator</option>
+												<option value="distributor" <%= user.level == "distributor" ? "selected" : "" %>>Distributor</option>
+												<option value="admin" <%= user.level == "admin" ? "selected" : "" %>>Admin</option>
+											</select>
+										</div>
+										<div class="form-group">
+											<button type="submit" class="btn btn-primary" name="ubah">Ubah</button>
+										</div>
+									</form>
+								<% }) %>
+							</div>			
+						</div>
+					</div>
+					
+				</div>
+			</div>
+		</section>
+			<div class="modal fade tambah-exam" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Add new Distributor</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+			        <form method="POST" action="/distributor/add">
+			        	
+				      <div class="modal-body">
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Nama:</label>
+				            <input type="text" name="nama" class="form-control" id="recipient-name">
+				          </div>
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Username:</label>
+				            <input type="text" name="username" class="form-control" id="recipient-name">
+				          </div>
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Password:</label>
+				            <input type="password" name="password" class="form-control" id="recipient-name">
+				          </div>
+				          <div class="form-group">
+				            <label for="recipient-name" class="col-form-label">Foto:</label>
+				            <input type="file" name="foto" class="form-upload" id="recipient-name">
+				          </div>
+
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+				        <button type="submit" class="btn btn-primary">Tambah</button>
+				      </div>
+			       </form>
+			    </div>
+			  </div>
+			</div>
+	</div>			
+
+
+
+<% include include/footer.ejs %>

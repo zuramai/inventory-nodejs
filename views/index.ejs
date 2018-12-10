@@ -1,0 +1,69 @@
+<% include include/header.ejs %>
+<div class="content">
+	<div class="content-header">
+		<div class="page-title">
+			<h3>Dashboard</h3>
+		</div>
+		<div class="page-breadcumb">
+			<nav aria-label="breadcrumb">
+			  <ol class="breadcrumb">
+			    <li class="breadcrumb-item active" aria-current="page">Home /</li>
+			  </ol>
+			</nav>
+		</div>
+	</div>			
+	<div class="content-body">
+		<section class="kotakk">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="kotak-statistic d-flex flex-row align-items-center justify-content-between">
+						<div class="statistic-icon">
+							<i class="fa fa-users"></i>
+						</div>
+						<div class="statistic-ket">
+							<h3><%= user.length  %></h3>
+						Users
+						</div>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="kotak-statistic st2 d-flex flex-row align-items-center justify-content-between">
+						<div class="statistic-icon">
+							<i class="fa fa-book"></i>
+						</div>
+						<div class="statistic-ket">
+							
+								<h3><%= barang.length  %></h3>
+							
+							
+							Barang
+						</div>	
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="kotak-statistic st3 d-flex flex-row align-items-center justify-content-between">
+						<div class="statistic-icon">
+							<i class="fa fa-users"></i>
+						</div>
+						<div class="statistic-ket">
+							<h3>3</h3> <p>Distributor</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<section  class="chart">
+			<div class="panel">
+				<div class="panel-header d-flex align-items-center">
+						<i class="fa fa-chart-line"></i> 	   Chart
+				</div>
+				<div class="panel-body">
+					<div id="chart-home">
+						
+					</div>
+				</div>
+			</div>
+		</section>
+	</div>			
+
+<% include include/footer.ejs %>
