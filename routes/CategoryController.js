@@ -5,13 +5,12 @@ var session = require('express-session');
 var cookieParser = require('cookie-parser');
 var flash = require('connect-flash');
 var conn = mysql.createConnection({
-    host: '103.129.220.250',
-    user: 'zoopedi1_sigudang',
-    password: 'zoopedi1_sigudang',
-    database: 'zoopedi1_sigudang',
+    host: 'localhost',
+    user: 'username',
+    password: 'password',
+    database: 'sigudang',
     multipleStatements: true
 });
-
 
 module.exports = {
 	index: function(req,res) {
@@ -32,7 +31,7 @@ module.exports = {
 	delete:function(req,res) {
 		var id = req.params.id;
 		conn.query("DELETE FROM kategori WHERE id="+id, function(error,result) {
-			if (error) console.log(error);,
+			if (error) console.log(error);
 			req.flash('success','Sukses delete data!');
 			res.redirect(301,'/category');
 		})

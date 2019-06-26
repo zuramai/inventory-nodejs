@@ -8,17 +8,17 @@ router.use(function timeLog (req, res, next) {
   next()
 });
 var conn = mysql.createConnection({
-    host: '103.129.220.250',
-    user: 'zoopedi1_sigudang',
-    password: 'zoopedi1_sigudang',
-    database: 'zoopedi1_sigudang',
+    host: 'localhost',
+    user: 'username',
+    password: 'password',
+    database: 'sigudang',
     multipleStatements: true
 });
 
 
 
 module.exports = {
-	
+		
 	home: function(req,res) {
 		conn.query('SELECT * FROM users', function(error,result) {
 			conn.query('SELECT * FROM barang', function(error, result1) {

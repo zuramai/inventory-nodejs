@@ -5,10 +5,10 @@ var formidable = require('formidable');
 var mv = require('mv');
 var util = require('util');
 var conn = mysql.createConnection({
-    host: '103.129.220.250',
-    user: 'zoopedi1_sigudang',
-    password: 'zoopedi1_sigudang',
-    database: 'zoopedi1_sigudang',
+    host: 'localhost',
+    user: 'username',
+    password: 'password',
+    database: 'sigudang',
     multipleStatements: true
 });
 
